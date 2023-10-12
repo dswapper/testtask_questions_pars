@@ -1,5 +1,7 @@
 venv/
 .idea
+**/__pycache__
+
 # UNCOMMENT BEFORE USAGE
 # *.env
 # *.env.*
