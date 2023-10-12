@@ -6,13 +6,15 @@ class BaseModel(db.Model):
     __abstract__ = True
 
     id =  db.Column(db.Integer(), primary_key = True)
-    created_on = db.Column(db.DateTime(), default=datetime.utcnow())
 
     def __repr__(self):
         return "<{}:{}>".format(self.id, self.name)
 
-class question(BaseModel):
+class Question(BaseModel):
     __tablename__ = 'questions'
 
-    question_text = db.Column(db.String(511), unique=True)
+    jservice_id = db.Column(db.Integer(), unique=True, index=True)
+    question_text = db.Column(db.String(511))
     question_answer = db.Column(db.String(511))
+    question_created_at = db.Column(db.DateTime())
+    question_airdate = db.Column(db.DateTime())

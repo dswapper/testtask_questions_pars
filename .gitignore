@@ -1,2 +1,5 @@
 venv/
 .idea
+# UNCOMMENT BEFORE USAGE
+# *.env
+# *.env.*
