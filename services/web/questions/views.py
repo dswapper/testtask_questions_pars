@@ -23,9 +23,9 @@ def post_questions() -> Tuple[Response, int]:
         questions_num: int
 
         content = request.get_json()
-        questions_num = content['questions_num']
 
         try:
+            questions_num = content['questions_num']
             questions = get_questions_from_jservice(questions_num)
 
             not_added_questions: int = questions_num
@@ -53,6 +53,8 @@ def post_questions() -> Tuple[Response, int]:
             return jsonify(result=f'Internal Server Error: API Connection troubles'), 500
         except RecursionError as err:
             return jsonify(result=f'Internal Server Error: Can\'t get unique questions, try again later'), 500
+        except KeyError as err:
+            return jsonify(result='Internal Server Error: Wrong JSON Request'), 500
         else:
             if not prev_question:
                 return Response('{}'), 201
