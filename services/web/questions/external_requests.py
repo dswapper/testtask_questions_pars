@@ -1,6 +1,5 @@
 from requests import get as requests_get, ConnectionError
-from typing import Tuple, Set
-from flask import Response
+from typing import Set
 
 from .models import Question
 from .config import Config
